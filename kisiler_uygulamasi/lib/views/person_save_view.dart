@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kisiler_uygulamasi/cubit/person_save_cubit.dart';
 
 class PersonSaveView extends StatefulWidget {
   const PersonSaveView({super.key});
@@ -10,10 +12,6 @@ class PersonSaveView extends StatefulWidget {
 class _PersonSaveViewState extends State<PersonSaveView> {
   var tfPersonName = TextEditingController();
   var tfPersonPhone = TextEditingController();
-
-  Future<void> save(String personName, String personPhone) async {
-    print("Person save : $personName - $personPhone");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +36,9 @@ class _PersonSaveViewState extends State<PersonSaveView> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  save(tfPersonName.text, tfPersonPhone.text);
+                  context
+                      .read<PersonSaveCubit>()
+                      .save(tfPersonName.text, tfPersonPhone.text);
                 },
                 child: const Text("Save"),
               ),

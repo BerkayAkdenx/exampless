@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kisiler_uygulamasi/cubit/home_cubit.dart';
 import 'package:kisiler_uygulamasi/entitiy/Persons.dart';
 import 'package:kisiler_uygulamasi/views/person_detail.dart';
+import 'package:kisiler_uygulamasi/views/person_save_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -11,16 +14,12 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   bool search = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    context.read<HomeCubit>().uploadToPersons();
 
-  Future<List<Persons>> showToPersons() async {
-    var personsList = <Persons>[];
-    var p1 = Persons(person_id: 1, person_name: "Ahmet", person_phone: "1111");
-    var p2 = Persons(person_id: 2, person_name: "Zeynep", person_phone: "2222");
-    var p3 = Persons(person_id: 3, person_name: "Beyz", person_phone: "3333");
-    personsList.add(p1);
-    personsList.add(p2);
-    personsList.add(p3);
-    return personsList;
+    super.initState();
   }
 
   @override
@@ -32,7 +31,7 @@ class _HomeViewState extends State<HomeView> {
             ? TextField(
                 decoration: const InputDecoration(hintText: "Search"),
                 onChanged: (searchResult) {
-                  print("Search result : $searchResult");
+                  context.read<HomeCubit>().search(searchResult);
                 },
               )
             : const Text("People"),
@@ -43,6 +42,7 @@ class _HomeViewState extends State<HomeView> {
                     setState(() {
                       search = false;
                     });
+                    context.read<HomeCubit>().uploadToPersons();
                   },
                   icon: const Icon(Icons.cancel))
               : IconButton(
@@ -54,13 +54,11 @@ class _HomeViewState extends State<HomeView> {
                   icon: const Icon(Icons.search))
         ],
       ),
-      body: FutureBuilder<List<Persons>>(
-        future: showToPersons(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            var personsList = snapshot.data;
+      body: BlocBuilder<HomeCubit, List<Persons>>(
+        builder: (context, personsList) {
+          if (personsList.isNotEmpty) {
             return ListView.builder(
-              itemCount: personsList!.length,
+              itemCount: personsList.length,
               itemBuilder: (context, index) {
                 var person = personsList[index];
                 return GestureDetector(
@@ -86,8 +84,9 @@ class _HomeViewState extends State<HomeView> {
                                   action: SnackBarAction(
                                     label: "EVET",
                                     onPressed: () {
-                                      print(
-                                          "Person remove : ${person.person_name}");
+                                      context
+                                          .read<HomeCubit>()
+                                          .remove(person.person_id);
                                     },
                                   ),
                                 ),
@@ -110,13 +109,13 @@ class _HomeViewState extends State<HomeView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          /*    Navigator.push(
+          Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => const PersonSaveView())).then((value) {
             print("Anasayfa dönüldü");
           });
-          */
+
           /*  var person =
               Persons(person_id: 1, person_name: "ahmet", person_phone: "111");
           Navigator.push(

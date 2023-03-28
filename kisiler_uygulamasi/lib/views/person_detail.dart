@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kisiler_uygulamasi/cubit/person_detail_cubit.dart';
 import 'package:kisiler_uygulamasi/entitiy/Persons.dart';
 
 class PersonDetailView extends StatefulWidget {
@@ -19,11 +21,6 @@ class _PersonDetailViewState extends State<PersonDetailView> {
     var person = widget.person;
     tfPersonName.text = person.person_name;
     tfPersonPhone.text = person.person_phone;
-  }
-
-  Future<void> update(
-      int personId, String personName, String personPhone) async {
-    print("Person update : $personId - $personName - $personPhone");
   }
 
   @override
@@ -49,8 +46,10 @@ class _PersonDetailViewState extends State<PersonDetailView> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  update(widget.person.person_id, widget.person.person_name,
-                      widget.person.person_phone);
+                  context.read<PersonDetailCubit>().update(
+                      widget.person.person_id,
+                      tfPersonName.text,
+                      tfPersonPhone.text);
                 },
                 child: const Text("Update"),
               ),
