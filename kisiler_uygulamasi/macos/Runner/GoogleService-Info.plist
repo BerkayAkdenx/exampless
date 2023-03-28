@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>822891640798-55ta0qaqhlsd9q0omk9phb8ipubcel4s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.822891640798-55ta0qaqhlsd9q0omk9phb8ipubcel4s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCw6Lf39fHFRT2H9SbVdNkF8yz2SUWXc2Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>822891640798</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.kisilerUygulamasi</string>
+	<key>PROJECT_ID</key>
+	<string>persons-b2044</string>
+	<key>STORAGE_BUCKET</key>
+	<string>persons-b2044.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:822891640798:ios:eb752854e3ae2a538a4f4f</string>
+	<key>DATABASE_URL</key>
+	<string>https://persons-b2044-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>

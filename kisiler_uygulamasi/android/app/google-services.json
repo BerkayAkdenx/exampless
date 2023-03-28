@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "822891640798",
+    "firebase_url": "https://persons-b2044-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "persons-b2044",
+    "storage_bucket": "persons-b2044.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822891640798:android:897739182ca801a28a4f4f",
+        "android_client_info": {
+          "package_name": "com.example.kisiler_uygulamasi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822891640798-ek0s991j6rgl028gv82a74jsbrti3i4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATn2gNm4c3bMeHhs2M3rfS9waseI3hAn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822891640798-ek0s991j6rgl028gv82a74jsbrti3i4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,36 +1,24 @@
-import 'package:kisiler_uygulamasi/entitiy/Persons.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class PersonsDaoRepository {
+  var refPersons = FirebaseDatabase.instance.ref().child("kisiler");
   Future<void> personSave(String personName, String personPhone) async {
-    print("Person save : $personName - $personPhone");
+    var info = <String, dynamic>{};
+    info["kisi_id"] = "";
+    info["kisi_ad"] = personName;
+    info["kisi_tel"] = personPhone;
+    refPersons.push().set(info);
   }
 
   Future<void> personUpdate(
-      int personId, String personName, String personPhone) async {
-    print("Person update : $personId - $personName - $personPhone");
+      String personId, String personName, String personPhone) async {
+    var info = <String, dynamic>{};
+    info["kisi_ad"] = personName;
+    info["kisi_tel"] = personPhone;
+    refPersons.child(personId).update(info);
   }
 
-  Future<List<Persons>> showToPersons() async {
-    var personsList = <Persons>[];
-    var p1 = Persons(person_id: 1, person_name: "Ahmet", person_phone: "1111");
-    var p2 = Persons(person_id: 2, person_name: "Zeynep", person_phone: "2222");
-    var p3 = Persons(person_id: 3, person_name: "Beyz", person_phone: "3333");
-    personsList.add(p1);
-    personsList.add(p2);
-    personsList.add(p3);
-    return personsList;
-  }
-
-  Future<List<Persons>> searchToPersons(String result) async {
-    var personsList = <Persons>[];
-    var p1 = Persons(person_id: 1, person_name: "Ahmet", person_phone: "1111");
-
-    personsList.add(p1);
-
-    return personsList;
-  }
-
-  Future<void> personRemove(int personId) async {
-    print("person remove : $personId");
+  Future<void> personRemove(String personId) async {
+    refPersons.child(personId).remove();
   }
 }

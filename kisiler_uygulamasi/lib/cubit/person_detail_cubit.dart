@@ -5,7 +5,7 @@ class PersonDetailCubit extends Cubit<void> {
   PersonDetailCubit() : super(0);
   var pRepo = PersonsDaoRepository();
   Future<void> update(
-      int personId, String personName, String personPhone) async {
+      String personId, String personName, String personPhone) async {
     pRepo.personUpdate(personId, personName, personPhone);
   }
 }
