@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_work/views/welcome.dart';
+import 'package:quiz_work/views/welcome_view.dart';
 
 void main() => runApp(const MyApp());
 

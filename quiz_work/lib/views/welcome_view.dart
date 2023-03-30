@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_work/base-components/base_background.dart';
 import 'package:quiz_work/constants.dart';
+import 'package:quiz_work/views/quiz_view.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key});
@@ -8,14 +10,7 @@ class WelcomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/bg.png"),
-                  fit: BoxFit.cover)),
-        ),
+        const BaseBackground(),
         SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -46,7 +41,12 @@ class WelcomeView extends StatelessWidget {
                   flex: 1,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const QuizView()));
+                  },
                   child: Container(
                     width: double.infinity,
                     alignment: Alignment.center,
