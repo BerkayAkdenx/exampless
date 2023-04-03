@@ -36,4 +36,10 @@ const List sample_data = [
     "options": ['Cin', 'Count>>', 'Cout', 'Output>>'],
     "answer_index": 2,
   },
+  {
+    "id": 5,
+    "question": "What the meaning of Exhausted?",
+    "options": ['tired', 'Happy', 'Sad', 'excited'],
+    "answer_index": 0,
+  },
 ];

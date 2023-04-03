@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quiz_work/base-components/base_background.dart';
 import 'package:quiz_work/constants.dart';
-import 'package:quiz_work/views/quiz_view.dart';
+import 'package:quiz_work/views/quiz/quiz_view.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key});
@@ -41,12 +42,7 @@ class WelcomeView extends StatelessWidget {
                   flex: 1,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const QuizView()));
-                  },
+                  onTap: () => Get.to(() => const QuizView()),
                   child: Container(
                     width: double.infinity,
                     alignment: Alignment.center,
