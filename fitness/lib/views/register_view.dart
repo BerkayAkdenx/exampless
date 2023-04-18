@@ -1,5 +1,3 @@
-import 'package:fitness/Widgets/hi_container_widget.dart';
-import 'package:fitness/Widgets/square_title.dart';
 import 'package:fitness/service/auth_service.dart';
 import 'package:fitness/views/login_view.dart';
 import 'package:flutter/material.dart';
@@ -19,18 +17,20 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: false,
+        toolbarHeight: 100,
+        backgroundColor: const Color(0xFF0F172A),
+        title: const Text(
+          "Create an Account",
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 24),
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 24),
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 30),
-                child: HiContainerWidget(
-                  title: "Hi,Welcome Back",
-                  desciption: "Register in to your account",
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: TextField(
@@ -70,35 +70,7 @@ class _RegisterViewState extends State<RegisterView> {
                       hintText: "Password"),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Text("Or continue with"),
-                  const Spacer(),
-                  SquareTitle(
-                    imagePath: "assets/loginAssets/facebook.png",
-                    function: () {
-                      print("facebook ile giriş ");
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: SquareTitle(
-                      imagePath: "assets/loginAssets/google.png",
-                      function: () {
-                        print("google ile giriş ");
-                      },
-                    ),
-                  ),
-                  SquareTitle(
-                    imagePath: "assets/loginAssets/appleBlack.png",
-                    function: () {
-                      print("apple ile giriş ");
-                    },
-                  )
-                ],
-              ),
-              const SizedBox(height: 200),
+              const SizedBox(height: 150),
               SizedBox(
                 height: 60,
                 width: 366,
@@ -117,11 +89,23 @@ class _RegisterViewState extends State<RegisterView> {
                                 builder: (context) => const LoginView())));
                   },
                   child: const Text(
-                    "Register",
+                    "Create Account",
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
               ),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 20),
+                child: Text("Already have an account?"),
+              ),
+              InkWell(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LoginView())),
+                child: const Text(
+                  "Sign In",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              )
             ],
           ),
         ),

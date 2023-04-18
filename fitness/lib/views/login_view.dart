@@ -61,14 +61,17 @@ class _LoginViewState extends State<LoginView> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   InkWell(
-                    child: const Text("Sign Up "),
+                    child: const Text(
+                      "Sign Up ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const RegisterView(),
                         )),
                   ),
-                  const Text("Or continue with"),
+                  const Text("Or "),
                   const Spacer(),
                   SquareTitle(
                     imagePath: "assets/loginAssets/facebook.png",
